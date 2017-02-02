@@ -61,9 +61,22 @@
 
 ;; Internal vars
 (defvar vimotion-is-active nil)
+(defvar vimotion-cancel-mapping-fn nil)
+
+(defun vimotion-cancel-mapping ()
+  "Turn off vi motion.  Needed for 'i', 'a', etc."
+  (interactive)
+  (funcall vimotion-cancel-mapping-fn)
+  )
 
 (defvar vimotion-keymap
   (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "i") 'vimotion-cancel-mapping)
+    (define-key map (kbd "a") (lambda ()
+                                (interactive)
+                                (forward-char)
+                                (vimotion-cancel-mapping)
+                                ))
     (define-key map (kbd "h") 'backward-char)
     (define-key map (kbd "j") 'next-line)
     (define-key map (kbd "k") 'previous-line)
@@ -112,7 +125,8 @@
   "Turn on vimotion."
   (interactive)
   (setq vimotion-is-active t)
-  (set-transient-map vimotion-keymap t 'vimotion-end)
+  (setq vimotion-cancel-mapping-fn
+        (set-transient-map vimotion-keymap t 'vimotion-end))
   )
 
 (provide 'vimotion)
