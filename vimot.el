@@ -80,7 +80,7 @@
                                  ))
     (define-key map (kbd "b") 'backward-word)
     (define-key map (kbd "$") 'move-end-of-line)
-    (define-key map (kbd "^") 'move-beginning-of-line)
+    (define-key map (kbd "^") 'back-to-indentation)
     (define-key map (kbd "0") 'move-beginning-of-line)
     (define-key map (kbd "C-f") 'scroll-up-command)
     (define-key map (kbd "C-b") 'scroll-down-command)
