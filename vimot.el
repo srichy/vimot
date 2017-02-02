@@ -77,6 +77,12 @@
                                 (forward-char)
                                 (vimotion-cancel-mapping)
                                 ))
+    (define-key map (kbd "o") (lambda ()
+                                (interactive)
+                                (forward-line)
+                                (open-line 1)
+                                (vimotion-cancel-mapping)
+                                ))
     (define-key map (kbd "h") 'backward-char)
     (define-key map (kbd "j") 'next-line)
     (define-key map (kbd "k") 'previous-line)
@@ -118,6 +124,7 @@
 (defun vimotion-end ()
   "Exit vimotion mapping"
   (setq vimotion-is-active nil)
+  (force-mode-line-update)
   )
 
 ;;;###autoload
@@ -125,6 +132,7 @@
   "Turn on vimotion."
   (interactive)
   (setq vimotion-is-active t)
+  (force-mode-line-update)
   (setq vimotion-cancel-mapping-fn
         (set-transient-map vimotion-keymap t 'vimotion-end))
   )
