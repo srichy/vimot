@@ -89,6 +89,7 @@
     (define-key map (kbd "l") 'forward-char)
     (define-key map (kbd "e") (lambda()
                                 (interactive)
+                                (forward-char)
                                 (forward-word)
                                 (backward-char)
                                 ))
