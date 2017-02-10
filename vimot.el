@@ -114,6 +114,11 @@
     (define-key map (kbd "}") 'forward-paragraph)
     (define-key map (kbd "(") 'backward-sentence)
     (define-key map (kbd ")") 'forward-sentence)
+    (define-key map (kbd "/") (lambda () (interactive) (isearch-forward)(vimotion-activate)))
+    (define-key map (kbd "?") (lambda () (interactive) (isearch-backward)(vimotion-activate)))
+    (define-key map (kbd "n") 'isearch-repeat-forward)
+    (define-key map (kbd "N") 'isearch-repeat-backward)
+    (define-key map (kbd "*") (lambda () (interactive) (isearch-forward-symbol-at-point)(vimotion-activate)))
     map))
 
 ;;;###autoload
