@@ -104,6 +104,8 @@
     (define-key map (kbd "$") 'move-end-of-line)
     (define-key map (kbd "^") 'back-to-indentation)
     (define-key map (kbd "0") 'move-beginning-of-line)
+    (define-key map (kbd "G") 'end-of-buffer)
+    (define-key map (kbd "gg") 'beginning-of-buffer)
     (define-key map (kbd "C-f") 'scroll-up-command)
     (define-key map (kbd "C-b") 'scroll-down-command)
     (define-key map (kbd "C-u") 'scroll-down-command)
