@@ -110,6 +110,8 @@
     (define-key map (kbd "C-b") 'scroll-down-command)
     (define-key map (kbd "C-u") 'scroll-down-command)
     (define-key map (kbd "C-d") 'scroll-up-command)
+    (define-key map (kbd "C-e") 'scroll-up-line)
+    (define-key map (kbd "C-y") 'scroll-down-line)
     (define-key map (kbd ">") 'scroll-up-line)
     (define-key map (kbd "<") 'scroll-down-line)
     (define-key map (kbd "{") 'backward-paragraph)
