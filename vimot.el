@@ -121,6 +121,10 @@
     (define-key map (kbd "H") '(lambda () (interactive)(move-to-window-line 0)))
     (define-key map (kbd "M") 'move-to-window-line)
     (define-key map (kbd "L") '(lambda () (interactive)(move-to-window-line -1)))
+    (define-key map (kbd "[[") 'backward-list) ;; not exactly right, but close
+    (define-key map (kbd "[]") 'backward-list) ;; not exactly right, but close
+    (define-key map (kbd "]]") 'forward-list)  ;; not exactly right, but close
+    (define-key map (kbd "][") 'forward-list)  ;; not exactly right, but close
     (define-key map (kbd "/") (lambda () (interactive) (isearch-forward)(vimotion-activate)))
     (define-key map (kbd "?") (lambda () (interactive) (isearch-backward)(vimotion-activate)))
     (define-key map (kbd "n") 'isearch-repeat-forward)
