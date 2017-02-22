@@ -110,17 +110,29 @@
     (define-key map (kbd "C-b") 'scroll-down-command)
     (define-key map (kbd "C-u") 'scroll-down-command)
     (define-key map (kbd "C-d") 'scroll-up-command)
+    (define-key map (kbd "C-e") 'scroll-up-line)
+    (define-key map (kbd "C-y") 'scroll-down-line)
     (define-key map (kbd ">") 'scroll-up-line)
     (define-key map (kbd "<") 'scroll-down-line)
     (define-key map (kbd "{") 'backward-paragraph)
     (define-key map (kbd "}") 'forward-paragraph)
     (define-key map (kbd "(") 'backward-sentence)
     (define-key map (kbd ")") 'forward-sentence)
+    (define-key map (kbd "H") '(lambda () (interactive)(move-to-window-line 0)))
+    (define-key map (kbd "M") 'move-to-window-line)
+    (define-key map (kbd "L") '(lambda () (interactive)(move-to-window-line -1)))
+    (define-key map (kbd "[[") 'backward-list) ;; not exactly right, but close
+    (define-key map (kbd "[]") 'backward-list) ;; not exactly right, but close
+    (define-key map (kbd "]]") 'forward-list)  ;; not exactly right, but close
+    (define-key map (kbd "][") 'forward-list)  ;; not exactly right, but close
     (define-key map (kbd "/") (lambda () (interactive) (isearch-forward)(vimotion-activate)))
     (define-key map (kbd "?") (lambda () (interactive) (isearch-backward)(vimotion-activate)))
     (define-key map (kbd "n") 'isearch-repeat-forward)
     (define-key map (kbd "N") 'isearch-repeat-backward)
     (define-key map (kbd "*") (lambda () (interactive) (isearch-forward-symbol-at-point)(vimotion-activate)))
+    (define-key map (kbd "v") (lambda () (interactive) (if mark-active (deactivate-mark) (set-mark-command nil))))
+    (define-key map (kbd "d") (lambda () (interactive) (if mark-active (kill-region (mark) (point)) (message "Motion commands not supported"))))
+    (define-key map (kbd "p") 'yank)
     map))
 
 ;;;###autoload
