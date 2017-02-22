@@ -130,6 +130,9 @@
     (define-key map (kbd "n") 'isearch-repeat-forward)
     (define-key map (kbd "N") 'isearch-repeat-backward)
     (define-key map (kbd "*") (lambda () (interactive) (isearch-forward-symbol-at-point)(vimotion-activate)))
+    (define-key map (kbd "v") (lambda () (interactive) (if mark-active (deactivate-mark) (set-mark-command nil))))
+    (define-key map (kbd "d") (lambda () (interactive) (if mark-active (kill-region (mark) (point)) (message "Motion commands not supported"))))
+    (define-key map (kbd "p") 'yank)
     map))
 
 ;;;###autoload
