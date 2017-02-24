@@ -139,13 +139,13 @@
                                      (backward-word)
                                      ))
     (vimotion-action map (kbd "b") (backward-word))
-    (vimotion-action map (kbd "$") (move-end-of-line))
+    (vimotion-action map (kbd "$") (move-end-of-line 1))
     (vimotion-action map (kbd "^") (back-to-indentation))
     (define-key map (kbd "0") (lambda ()
                                 (interactive)
                                 (if (vimotion-have-count)
                                     (vimotion-accum 0)
-                                  (move-beginning-of-line)
+                                  (move-beginning-of-line 1)
                                   (vimotion-reset-accum)
                                   )
                                 )
@@ -170,7 +170,7 @@
     (vimotion-action map (kbd "(") (backward-sentence))
     (vimotion-action map (kbd ")") (forward-sentence))
     (vimotion-action map (kbd "H") (move-to-window-line 0))
-    (vimotion-action map (kbd "M") (move-to-window-line))
+    (vimotion-action map (kbd "M") (move-to-window-line nil))
     (vimotion-action map (kbd "L") (move-to-window-line -1))
     (vimotion-action map (kbd "[[") (backward-list)) ;; not exactly right, but close
     (vimotion-action map (kbd "[]") (backward-list)) ;; not exactly right, but close
@@ -187,12 +187,12 @@
     (vimotion-action map (kbd "*") (progn
                                      (isearch-forward-symbol-at-point)
                                      (vimotion-activate)))
-    (vimotion-action map (kbd "v") ((if mark-active
-                                        (deactivate-mark)
-                                      (set-mark-command nil))))
-    (vimotion-action map (kbd "d") ((if mark-active
-                                        (kill-region (mark) (point))
-                                      (message "Motion commands not supported"))))
+    (vimotion-action map (kbd "v") (if mark-active
+                                       (deactivate-mark)
+                                     (set-mark-command nil)))
+    (vimotion-action map (kbd "d") (if mark-active
+                                       (kill-region (mark) (point))
+                                     (message "Motion commands not supported")))
     (vimotion-action map (kbd "p") (yank))
     map))
 
