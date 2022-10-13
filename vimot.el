@@ -33,15 +33,17 @@
 ;; ########   Compatibility   ########################################
 ;;
 ;; Developed on Emacs-24.3
-;; Others unknown
+;; Functional on Emacs-29.0.50
 
 ;; ########   Quick start   ########################################
 ;;
-;; Add to your ~/.emacs
+;; 1. Put vimot.el in a suitable for Emacs (e.g., ~/.emacs.d)
+;; 2. Add to your ~/.emacs.d/init.el (or ~/.emacs, etc.):
 ;;
-;;	(require 'vimotion)
-;;      (vimotion-enable t)
-;;      (global-set-key (kbd "C-^") 'vimotion-activate)
+;; ;; vimot
+;; (load-file "~/.emacs.d/vimot.el")
+;; (vimotion-enable t)
+;; (global-set-key (kbd "C-^") 'vimotion-activate)
 ;;
 
 ;; ########   Description   ########################################
